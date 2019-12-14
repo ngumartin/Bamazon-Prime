@@ -1,23 +1,3 @@
-DROP DATABASE IF EXISTS bamazon_db;
-CREATE DATABASE bamazon_db;
-USE bamazon_db;
-
-CREATE TABLE products
-(
-    ItemID INTEGER
-    AUTO_INCREMENT NOT NULL,
-ProductName VARCHAR
-    (100) NOT NULL,
-departmentName VARCHAR
-    (100) NOT NULL,
-price VARCHAR
-    (10) NOT NULL,
-stockQuantity INT
-    (10) NOT NULL,
-PRIMARY KEY
-    (ItemID)
-); 
-
 INSERT INTO products
     (productName, departmentName, price, stockQuantity)
 VALUES
