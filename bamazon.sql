@@ -4,22 +4,22 @@ USE bamazon_db;
 
 CREATE TABLE products
 (
-    ItemID INTEGER
+    id INTEGER
     AUTO_INCREMENT NOT NULL,
 ProductName VARCHAR
     (100) NOT NULL,
-departmentName VARCHAR
+DepartmentName VARCHAR
     (100) NOT NULL,
-price VARCHAR
+Price VARCHAR
     (10) NOT NULL,
-stockQuantity INT
+StockQuantity INT
     (10) NOT NULL,
 PRIMARY KEY
-    (ItemID)
+    (id)
 ); 
 
 INSERT INTO products
-    (productName, departmentName, price, stockQuantity)
+    (ProductName, DepartmentName, Price, StockQuantity)
 VALUES
     ("Seiko Prospex", "Men's Watch", 525, 8),
     ("Citizen Promaster Diver", "Men's Watch", 495, 5),
@@ -34,5 +34,5 @@ VALUES
 
 
 
-SELECT *
-FROM products;
+SELECT * FROM products;
+
