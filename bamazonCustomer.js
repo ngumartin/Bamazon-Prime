@@ -55,13 +55,18 @@ let checkAndBuy = function () {
             let chosenQuantity = answer.Quantity
             if (chosenQuantity <= res[chosenId].StockQuantity) {
                 console.log("Your total for " + "(" + answer.Quantity + ")" + " - " + res[chosenId].ProductName + " is: " + res[chosenId].Price * chosenQuantity);
+                // console.log(answer.Quantity);
                 connection.query("UPDATE products SET ? WHERE ?", [{
                     StockQuantity: res[chosenId].StockQuantity - chosenQuantity
                 }, { id: res[chosenId].id }], function (err, res) {
                     if (err) throw err;
 
                     else {
-                        if (chosenProduct.chosenQuantity > chosenId.StockQuantity) {
+                        console.log(chosenProduct.StockQuantity);
+                        console.log(chosenQuantity);
+                        if (chosenQuantity > chosenProduct.StockQuantity) {
+                            // console.log(answer.Quantity);
+
                             console.log("==========================================================================================");
                             console.log("Sorry, insufficient quanity in our inventory at this time, please choose a smaller amount.");
                             console.log("========================================================================================\n");
