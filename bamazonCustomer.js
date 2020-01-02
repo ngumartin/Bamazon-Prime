@@ -60,40 +60,43 @@ let checkAndBuy = function () {
                     StockQuantity: res[chosenId].StockQuantity - chosenQuantity
                 }, { id: res[chosenId].id }], function (err, res) {
                     if (err) throw err;
+                    // console.log();
 
-                    else {
-                        console.log(chosenProduct.StockQuantity);
-                        console.log(chosenQuantity);
-                        if (chosenQuantity > chosenProduct.StockQuantity) {
-                            // console.log(answer.Quantity);
 
-                            console.log("==========================================================================================");
-                            console.log("Sorry, insufficient quanity in our inventory at this time, please choose a smaller amount.");
-                            console.log("========================================================================================\n");
 
-                        };
 
-                        inquirer
-                            .prompt({
-                                name: 'next',
-                                type: "input",
-                                message: 'Would you like to place another order (yes/no)?\n',
-                            })
-                            .then(function (answer) {
-                                if (answer.next === "yes") {
-                                    checkAndBuy();
-                                } else {
-                                    connection.end()
-                                    console.log("===============================================");
-                                    console.log("Thank you for shopping with us! Come back soon!")
-                                    console.log("===============================================\n");
-
-                                }
-
-                            });
-                    }
                 })
+            } else {
+                // console.log(chosenProduct.StockQuantity);
+                // console.log(chosenQuantity);
+                if (chosenQuantity > chosenProduct.StockQuantity) {
+                    // console.log(answer.Quantity);
+
+                    console.log("==========================================================================================");
+                    console.log("Sorry, insufficient quanity in our inventory at this time, please choose a smaller amount.");
+                    console.log("========================================================================================\n");
+
+                };
             }
+            inquirer
+                .prompt({
+                    name: 'next',
+                    type: "input",
+                    message: 'Would you like to place another order (yes/no)?\n',
+                })
+                .then(function (answer) {
+                    if (answer.next === "yes") {
+                        checkAndBuy();
+                    } else {
+                        connection.end()
+                        console.log("===============================================");
+                        console.log("Thank you for shopping with us! Come back soon!")
+                        console.log("===============================================\n");
+
+                    }
+
+                });
+
         });
     })
 
